@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="Box-Verschiebung.css" type="text/css" rel="stylesheet">
+	<title>Box Verschieben</title>
+	
+</head>
+<body>
+	<div id="seitenbereich">
+		<header id="kopfzeile">
+		<h1>Box Verschieben</h1>
+		</header>
+		<main id="inhalt">
+			<div id="box">Box</div>
+		</main>
+		<nav id="navi">
+			<p>Schiebe Box</p>
+			<ul>	
+				<li class="left" onclick="schiebeLinks()">links</li>
+				<li class="right" onclick="schiebeRechts()">rechts</li>
+				<li class="up" onclick="schiebeOben()">oben</li>
+				<li class="down" onclick="schiebeUnten()">unten</li>
+			</ul>
+			<button id="oben" onclick="schiebeOben()">oben</button>
+			<button id="links" onclick="schiebeLinks()">links</button>
+			<button class="right" onclick="schiebeRechts()">rechts</button>
+			<button id="unten" onclick="schiebeUnten()">unten</button>
+			</nav>
+
+		<footer id="fußzeile">Erarbeitung JavaScript</footer>
+	</div>
+</body>
+<script>
+	var box = document.getElementById("box");
+	var up = 1;			//Hilfsvariabeln
+	var right = 1;		//Hilfsvariabeln
+	var left = 1;		//Hilfsvariabeln
+	var down = 1;		//Hilfsvariabeln
+	console.log("Margin:",up*10-10,"px",right*10-10,"px",down*10-10,"px", left*10-10,"px");
+	
+	function schiebeOben() {
+		if (up<30) {  //bei Margin 300px erscheint der Box von der anderen Seite 
+			box.style.marginTop = up * - 10 + "px";  //10 px weniger bedeutet 10 px nach oben
+			up=up+1; 		//Variable um immer weiter hochzuzelen
+			down= down-1;	//damit beim wechsel zwischen unten und oben 				button da gestartet wird wo man aufgehört hat
+			console.log("Margin:",(up*10-10)*-1,"px",(right*10-10)*-1,"px",(down*10-10)*-1,"px", (left*10-10)*-1,"px"); //alle Margin Werte werden in der Console ausgegeben(mal zehn für die px anzahl angezeigt wird keine Variabeln werte)
+		}
+		else
+		{
+			down=55;
+			up=-55;	
+		}
+	}
+
+	function schiebeUnten() {
+		if (down<55) {
+			box.style.marginTop = down * 10 + "px";
+			down=down+1;
+			up=up-1;
+			console.log("Margin:",(up*10-10)*-1,"px",(right*10-10)*-1,"px",(down*10-10)*-1,"px", (left*10-10)*-1,"px");
+		}
+		else
+		{
+			up= 30;
+			down=-30;
+		}
+	}
+
+	function schiebeRechts() {
+		if (right<55) {
+			box.style.marginLeft = right * 10 + "px";
+			right=right+1;
+			left=left-1;
+			console.log("Margin:",(up*10-10)*-1,"px",(right*10-10)*-1,"px",(down*10-10)*-1,"px", (left*10-10)*-1,"px");
+		}
+		else
+		{
+			left=35;
+			right=-35;
+		}
+	}
+
+
+	function schiebeLinks() {
+		if (left<37) {
+			box.style.marginLeft = left * - 10 + "px";
+			left=left+1;
+			right=right-1
+			console.log("Margin:",(up*10-10)*-1,"px",(right*10-10)*-1,"px",(down*10-10)*-1,"px", (left*10-10)*-1,"px");
+		}
+		else
+		{
+			right=55;
+			left=-55;
+		}
+	}
+
+	
+</script>
+</html>
